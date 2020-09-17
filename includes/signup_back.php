@@ -66,7 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
               $result2 = mysqli_query($conn, $sql_select2);
               if (mysqli_num_rows($result2) > 0) {
-                //id from users equals userid from profileimg
+                $name = $first;
+                $subject = "Hadrian Cup!";
+                $message = "Hey ".$name."! Welcome to Hadrian Cup! More details coming soon...";
+
+                $mailto = $email;
+                $headers = "From: noreply@hadriancup.com";
+                $txt = $message."\n\n- Hadrian Capital Club Officers";
+
+                mail($mailto, $subject, $txt, $headers);
+
 
                 header("Location: ../signup.php?signup=success#main");
                 exit();
