@@ -18,8 +18,14 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-					</header>
+					<!-- <header id="header">
+					</header> -->
+				<div id="intro">
+					<h1>About Us</h1>
+					<ul class="actions">
+						<li><a href="#main" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+					</ul>
+				</div>
 
 				<!-- Nav -->
 					<nav id="nav">

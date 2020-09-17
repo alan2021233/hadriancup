@@ -13,7 +13,6 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-
 				<!-- Header -->
 					<!-- <header id="header">
 					</header> -->
@@ -47,69 +46,68 @@
 									<div class="fields">
 										<div class="field">
 											<label for="name">First Name</label>
-											<input type="text" name="first" id="first" />
+											<input type="text" name="first" id="first" value="<?php if(isset($_GET['signup']) && isset($_GET['first'])) {if($_GET['signup'] != 'invalid-name') {echo $_GET['first'];}} ?>"/>
 										</div>
 										<div class="field">
 											<label for="name">Last Name</label>
-											<input type="text" name="last" id="last" />
+											<input type="text" name="last" id="last" value="<?php if(isset($_GET['signup']) && isset($_GET['last'])) {if($_GET['signup'] != 'invalid-name') {echo $_GET['last'];}} ?>" />
 										</div>
 										<div class="field">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<input type="text" name="email" id="email" value="<?php if(isset($_GET['signup']) && isset($_GET['email'])) {if($_GET['signup'] != 'invalid-email') {echo $_GET['email'];}} ?>" />
 										</div>
 										<div class="field">
 											<label for="email">School</label>
-											<input type="text" name="school" id="school" />
+											<input type="text" name="school" id="school" value="<?php if(isset($_GET['signup']) && isset($_GET['school'])) {echo $_GET['school']; }?>" />
 										</div>
 										<div class="field">
 											<label for="email">Grade Level</label>
-											<input type="number" name="glevel" id="glevel" />
+											<input type="number" name="glevel" id="glevel" value="<?php if(isset($_GET['signup']) && isset($_GET['glevel'])) {if($_GET['signup'] != 'invalid-grade') {echo $_GET['glevel'];}}  ?>" />
 										</div>
 										<div class="field">
 											<label for="email">Business Club Contact email</label>
-											<input type="text" name="clubcontact" id="clubcontact" />
+											<input type="text" name="clubcontact" id="clubcontact" value="<?php if(isset($_GET['signup']) && isset($_GET['contactclub'])) {if($_GET['signup'] != 'invalid-email') {echo $_GET['clubcontact'];}}  ?>"/>
 										</div>
 									</div>
 									<ul class="actions">
 										<li><input type="submit" name="submit" value="Signup"/></li>
+										<?php
+
+										if (isset($_GET['signup'])) {
+										  $signupcheck = $_GET['signup'];
+										  //$_GET can retrieve from the url
+										  if ($signupcheck == "empty") {
+										    echo "<p class='error'>Fill out all fields</p>";
+
+										  }
+										  elseif ($signupcheck == "invalid-email") {
+										    echo "<p class='error'>Submit valid email addresses</p>";
+
+										  }
+										  elseif ($signupcheck == "invalid-name") {
+										    echo "<p class='error'>Submit a correct first and last name</p>";
+
+										  }
+										  elseif ($signupcheck == "invalid-grade") {
+										    echo "<p class='error'>Only high school students may join</p>";
+
+										  }
+										  elseif ($signupcheck == "alreadyexists") {
+										    echo "<p class='error'>An account with this username or email already exists </p>";
+
+										  }
+										  elseif ($signupcheck == "success") {
+										    echo "<h4 class='success'>You have succesfully signed up. Expect to hear from us soon!</h4><br>";
+										  }
+										}
+										?>
 									</ul>
+
 								</form>
+
 							</section>
 
-							<?php
-							if (isset($_GET['signup'])) {
-							  $signupcheck = $_GET['signup'];
-							  //$_GET can retrieve from the url
-							  if ($signupcheck == "empty") {
-							    echo "<p class='error'>Fill out all fields</p>";
-							    exit();
-							  }
-							  elseif ($signupcheck == "invalid-email") {
-							    echo "<p class='error'>Submit a valid email address</p>";
-							    exit();
-							  }
-							  elseif ($signupcheck == "invalid-name") {
-							    echo "<p class='error'>Submit a correct first and last name</p>";
-							    exit();
-							  }
-							  elseif ($signupcheck == "alreadyexists") {
-							    echo "<p class='error'>An account with this username or email already exists </p>";
-							    echo "<a href='login.php'>Please login here!</a>";
-							    exit();
-							  }
-							  elseif ($signupcheck == "error") {
-							    echo "<p class='error'>There was a coding error </p>";
-							    echo "<a href='login.php'>Please login here!</a>";
-							    exit();
-							  }
-							  elseif ($signupcheck == "success") {
-							    echo "<p class='success'>You have signed up!</p><br>";
-							    echo "<a href='login.php'>Login here!</a>";
-							    exit();
 
-							  }
-							}
-							?>
 					</div>
 
 
