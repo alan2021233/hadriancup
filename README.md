@@ -1,2 +1,2 @@
 # hadriancup
-Official website for hadrian cup
+Official website for Hadrian Cup!
