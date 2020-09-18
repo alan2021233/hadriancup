@@ -10,7 +10,7 @@ CREATE TABLE signups (
     clubcontact VARCHAR(255)
 )
 */
-require 'hg.db.php';
+require 'lc.db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $first = mysqli_real_escape_string($conn, $_POST['first']);
